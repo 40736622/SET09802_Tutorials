@@ -64,7 +64,7 @@ public class Rectangle {
 	
 	public void displayDetails() {
 		String details = String.format("This rectangle has an area of %d and a perimeter of %d.", 
-				this.getArea(), this.getPerimeter());
+				getArea(), getPerimeter());
 		
 		JOptionPane.showMessageDialog(null, details, "Rectangle", JOptionPane.PLAIN_MESSAGE);
 	}
