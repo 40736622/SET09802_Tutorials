@@ -6,14 +6,10 @@ import javax.swing.JOptionPane;
 public class PostgraduateDiploma {
 	String name;
 	ArrayList<Module> modules = new ArrayList<Module>();
-	
-	public PostgraduateDiploma(String name, ArrayList<Module> modules) {
-		this.name = name;
-		this.modules = modules;
-	}
+	private final int MAX_NUMBER_OF_MODULES = 6;
 	
 	public PostgraduateDiploma(String name) {
-		this(name, new ArrayList<Module>());
+		this.name = name;
 	}
 	
 	public void setName(String name) {
@@ -25,7 +21,12 @@ public class PostgraduateDiploma {
 	}
 	
 	public void addModule(Module module) {
-		this.modules.add(module);
+		if (this.modules.size() < MAX_NUMBER_OF_MODULES) {
+			this.modules.add(module);			
+		} else {
+			String message = String.format("%s has reached its max module limit.", this.name);
+			JOptionPane.showMessageDialog(null, message, "Module Limit", JOptionPane.WARNING_MESSAGE);
+		}
 	}
 	
 	

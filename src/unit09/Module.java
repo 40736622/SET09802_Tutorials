@@ -6,14 +6,10 @@ import javax.swing.JOptionPane;
 public class Module {
 	private String name;
 	private ArrayList<Lecture> lectures = new ArrayList<Lecture>();
-	
-	public Module(String name, ArrayList<Lecture> lectures) {
-		this.name = name;
-		this.lectures = lectures;
-	}
+	private final int MAX_NUMBER_OF_LECTURES = 10;
 	
 	public Module(String name) {
-		this(name, new ArrayList<Lecture>());
+		this.name = name;
 	}
 	
 	public void setName(String name) {
@@ -25,7 +21,12 @@ public class Module {
 	}
 	
 	public void addLecture(Lecture lecture) {
-		this.lectures.add(lecture);
+		if (this.lectures.size() < MAX_NUMBER_OF_LECTURES) {
+			this.lectures.add(lecture);	
+		} else {
+			String message = String.format("%s has reached its max lecture limit.", this.name);
+			JOptionPane.showMessageDialog(null, message, "Lecture Limit", JOptionPane.WARNING_MESSAGE);
+		}
 	}
 	
 	@Override
